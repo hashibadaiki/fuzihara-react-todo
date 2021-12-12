@@ -18,7 +18,9 @@ export const App = () => {
       <section className='todoList'>
         <h2>todo list</h2>
         <InsertFrom />
-        <div>{text}</div>
+        {text.map((elm, i) => {
+          return <div key={i}>{elm}</div>
+        })}
       </section>
     </div>
   )
