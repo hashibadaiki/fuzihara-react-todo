@@ -4,12 +4,12 @@ import { insertText } from './testSlice'
 import { useDispatch } from 'react-redux';
 
 
-export const InsertFrom = ( { getTodo }: any ) => {
+export const InsertFrom = () => {
   const [text, setText] = useState("")
   const dispatch = useDispatch();
 
-  const insertTodo = (e: any) => {
-    setText(e.target.value)
+  const insertTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText((e.target as HTMLInputElement).value)
   }
   const dispatchText = () => {
     dispatch(insertText(text))

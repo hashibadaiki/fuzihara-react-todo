@@ -2,10 +2,11 @@ import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
 import { increase } from './testSlice';
+import { RootState } from './store';
 
 export const App = () => {
-  const count = useSelector((state: any) => state.counter.count);
-  const text = useSelector((state: any) => state.counter.text);
+  const count = useSelector((state: RootState) => state.counter.count);
+  const text = useSelector((state: RootState) => state.counter.text);
   const dispatch = useDispatch();
 
   return (
