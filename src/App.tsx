@@ -11,10 +11,15 @@ export const App = () => {
 
   return (
     <div className="wrapper">
+      {/* 教える用に置いておく。 */}
       <button onClick={() => dispatch(increase())}>up</button>
       <div>{count}</div>
-      <div>{text}</div>
-      <InsertFrom />
+      {/* ここから本題。todo list */}
+      <section>
+        <h2>todo list</h2>
+        <InsertFrom />
+        <div>{text}</div>
+      </section>
     </div>
   )
 }

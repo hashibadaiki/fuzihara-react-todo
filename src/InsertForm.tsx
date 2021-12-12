@@ -17,7 +17,6 @@ export const InsertFrom = () => {
 
   return (
     <div className="App">
-      <h2>todo app</h2>
       <form>
       <input type="text" onChange={insertTodo}/>
       <input type="button" value="追加" onClick={dispatchText}/>
