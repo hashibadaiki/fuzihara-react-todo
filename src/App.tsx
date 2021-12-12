@@ -15,7 +15,7 @@ export const App = () => {
       <button onClick={() => dispatch(increase())}>up</button>
       <div>{count}</div>
       {/* ここから本題。todo list */}
-      <section>
+      <section className='todoList'>
         <h2>todo list</h2>
         <InsertFrom />
         <div>{text}</div>
