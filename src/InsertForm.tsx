@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import { insertText } from './testSlice'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 export const InsertFrom = ( { getTodo }: any ) => {
