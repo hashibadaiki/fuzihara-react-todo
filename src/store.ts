@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import combineReducer from "./testSlice";
-
-// const rootReducer = combineReducer({});
-// export type RootState = ReturnType<typeof rootReducer>;
+import asyncReducer from "./asyncSlice";
 
 export const store = configureStore({
   reducer: {
     counter: combineReducer,
+    asyncTest: asyncReducer,
   },
 });
 
