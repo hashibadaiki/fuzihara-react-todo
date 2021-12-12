@@ -9,9 +9,11 @@ export const asyncSlice = createSlice({
   reducers: {
     pulsA: (state) => {
       state.countA += 5;
+      window.setTimeout(window.alert, 2000, "testA");
     },
     pulsB: (state) => {
       state.countB += 5;
+      window.setTimeout(window.alert, 2000, "testB");
     },
   },
 });

@@ -13,9 +13,8 @@ export const App = () => {
   const dispatch = useDispatch();
 
   const DoubleUp = async () => {
-    const dis = () => { dispatch(pulsA()) }
-    // @ts-ignore
-    await window.setTimeout(window.alert, 5000, "test");
+    // await new Promise(resolve => setTimeout(resolve, 3000)) 
+    await dispatch(pulsA())
     await dispatch(pulsB())
   }
 
