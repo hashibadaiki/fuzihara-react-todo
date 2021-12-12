@@ -8,12 +8,14 @@ import { increase } from './testSlice';
 export const App = () => {
   const [todo, getTodo] = useState()
   const count = useSelector((state: any) => state.counter.count);
+  const text = useSelector((state: any) => state.counter.text);
   const dispatch = useDispatch();
 
   return (
     <div className="wrapper">
       <button onClick={() => dispatch(increase())}>up</button>
       <div>{count}</div>
+      <div>{text}</div>
       <InsertFrom getTodo={getTodo}/>
       <div>{todo}</div>
     </div>
