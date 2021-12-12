@@ -22,3 +22,8 @@ export const counterSlice = createSlice({
 export const { increase, decrease, insertText } = counterSlice.actions;
 
 export default counterSlice.reducer;
+
+// todo を追加できるようにしていく
+// use selectorの非同期問題確認
+// todo を削除するようにする(以下は藤原さんとやってみる)
+// todo を編集できるようにする
