@@ -20,7 +20,6 @@ export const InsertFrom = ( { getTodo }: any ) => {
       <h2>todo app</h2>
       <form>
       <input type="text" onChange={insertTodo}/>
-      {/* @ts-ignore */}
       <input type="button" value="追加" onClick={dispatchText}/>
       </form>
     </div>
