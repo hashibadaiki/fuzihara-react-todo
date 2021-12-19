@@ -20,10 +20,9 @@ export const App = () => {
 
   // getStateだと想定通りに対応できる
   const testE = () => {
-    // console.log(store.getState())
     dispatch(pulsA())
-    const nowStateA = store.getState()
-    dispatch(pulsC(nowStateA.asyncTest.countA))
+    const currentState = store.getState()
+    dispatch(pulsC(currentState.asyncTest.countA))
 
     // この書き方はだめ
     // const countA = useSelector((state: RootState) => state.asyncTest.countA);
