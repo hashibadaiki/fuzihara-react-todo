@@ -2,7 +2,7 @@ import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
 import { increase } from './testSlice';
-import { pulsA, pulsB } from './asyncSlice';
+import { pulsA, pulsB, asyncAlert } from './asyncSlice';
 import { RootState } from './store';
 
 export const App = () => {
@@ -25,7 +25,7 @@ export const App = () => {
       <div>{count}</div>
       <div className='asyncTest'>
         <p>async test 用</p>
-        <button onClick={() => dispatch(pulsA())}>Aup</button>
+        <button onClick={() => dispatch(asyncAlert())}>Aup</button>
         <div>{countA}</div>
         <button onClick={() => dispatch(pulsB())}>Bup</button>
         <div>{countB}</div>
