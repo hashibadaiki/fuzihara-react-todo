@@ -5,11 +5,6 @@ export const awaitTest = createAsyncThunk("alert", async () => {
   const res = await new Promise((resolve) => setTimeout(resolve, 3000));
   return res;
 });
-// 非同期をテストする為だけの処理。3秒停止
-export const awaitT = createAsyncThunk("alert", async () => {
-  const res = await new Promise((resolve) => setTimeout(resolve, 3000));
-  return res;
-});
 
 export const asyncSlice = createSlice({
   name: "asyncTest",
@@ -18,25 +13,22 @@ export const asyncSlice = createSlice({
     countB: 0,
     countC: 0,
     countD: 0,
-    text: "",
   },
   reducers: {
     pulsA: (state) => {
       state.countA += 5;
-      // window.setTimeout(window.alert, 2000, "testA");
-      // new Promise((resolve) => setTimeout(resolve, 3000));
-      // state.countA += 5;
     },
     pulsB: (state) => {
       state.countB += 5;
-      // window.setTimeout(window.alert, 2000, "testB");
     },
+    // この方法だと不具合が出る
     pulsC: (state, action) => {
       state.countC += action.payload;
-      console.log(action.payload);
-      console.log(state.countA);
-      console.log(state.countC);
+      console.log("payload", action.payload);
+      console.log("countA", state.countA);
+      console.log("countC", state.countC);
     },
+    // この方法だと不具合が出ない
     pulsD: (state) => {
       state.countD += state.countA;
       console.log(state.countD);

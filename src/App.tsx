@@ -1,8 +1,7 @@
 import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
-import { increase } from './testSlice';
-import { pulsA, pulsB, pulsC, pulsD, awaitTest } from './asyncSlice';
+import { pulsA, pulsB, pulsC, pulsD } from './asyncSlice';
 import { RootState } from './store';
 
 export const App = () => {
@@ -14,12 +13,6 @@ export const App = () => {
   const countD = useSelector((state: RootState) => state.asyncTest.countD);
   const dispatch = useDispatch();
 
-  const test = () => {
-    dispatch(pulsA())
-    dispatch(awaitTest())
-    dispatch(pulsD())
-  }
-
   const testC = () => {
     dispatch(pulsA())
     dispatch(pulsC(countA))
@@ -27,9 +20,6 @@ export const App = () => {
 
   return (
     <div className="wrapper">
-      {/* 教える用に置いておく。 */}
-      {/* <button onClick={() => dispatch(increase())}>up</button>
-      <div>{count}</div> */}
       <div className='asyncTest'>
         <p>async test 用</p>
         <button onClick={() => dispatch(pulsA())}>Aup</button>
@@ -38,7 +28,7 @@ export const App = () => {
         <div>{countB}</div>
         <button onClick={() => testC()}>Cup</button>
         <div>{countC}</div>
-        <button onClick={() => test()}>Dup</button>
+        <button onClick={() => dispatch(pulsD())}>Dup</button>
         <div>{countD}</div>
         {/* <button onClick={() => dispatch(pulsC())}>BothUP(normal)</button>
         <button onClick={() => dispatch(awaitTest())}>BothUP(async)</button> */}
