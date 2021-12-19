@@ -2,7 +2,7 @@ import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
 import { increase } from './testSlice';
-import { pulsA, pulsB, asyncAlert } from './asyncSlice';
+import { pulsA, pulsB, pulsC, pulsD, awaitTest } from './asyncSlice';
 import { RootState } from './store';
 
 export const App = () => {
@@ -10,25 +10,38 @@ export const App = () => {
   const text = useSelector((state: RootState) => state.counter.text);
   const countA = useSelector((state: RootState) => state.asyncTest.countA);
   const countB = useSelector((state: RootState) => state.asyncTest.countB);
+  const countC = useSelector((state: RootState) => state.asyncTest.countC);
+  const countD = useSelector((state: RootState) => state.asyncTest.countD);
   const dispatch = useDispatch();
 
-  const DoubleUp = () => {
+  const test = () => {
     dispatch(pulsA())
-    dispatch(pulsB())
+    dispatch(awaitTest())
+    dispatch(pulsD())
+  }
+
+  const testC = () => {
+    dispatch(pulsA())
+    dispatch(pulsC(countA))
   }
 
   return (
     <div className="wrapper">
       {/* 教える用に置いておく。 */}
-      <button onClick={() => dispatch(increase())}>up</button>
-      <div>{count}</div>
+      {/* <button onClick={() => dispatch(increase())}>up</button>
+      <div>{count}</div> */}
       <div className='asyncTest'>
         <p>async test 用</p>
-        <button onClick={() => dispatch(asyncAlert())}>Aup</button>
+        <button onClick={() => dispatch(pulsA())}>Aup</button>
         <div>{countA}</div>
         <button onClick={() => dispatch(pulsB())}>Bup</button>
         <div>{countB}</div>
-        <button onClick={DoubleUp}>Both UP</button>
+        <button onClick={() => testC()}>Cup</button>
+        <div>{countC}</div>
+        <button onClick={() => test()}>Dup</button>
+        <div>{countD}</div>
+        {/* <button onClick={() => dispatch(pulsC())}>BothUP(normal)</button>
+        <button onClick={() => dispatch(awaitTest())}>BothUP(async)</button> */}
       </div>
       {/* ここから本題。todo list */}
       <section className='todoList'>
