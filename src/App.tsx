@@ -12,10 +12,9 @@ export const App = () => {
   const countB = useSelector((state: RootState) => state.asyncTest.countB);
   const dispatch = useDispatch();
 
-  const DoubleUp = async () => {
-    // await new Promise(resolve => setTimeout(resolve, 3000)) 
-    await dispatch(pulsA())
-    await dispatch(pulsB())
+  const DoubleUp = () => {
+    dispatch(pulsA())
+    dispatch(pulsB())
   }
 
   return (

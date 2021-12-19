@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const asyncAlert = createAsyncThunk("alert", async () => {
-  const res = await new Promise((test) => setTimeout(test, 3000));
+  const res = await new Promise((resolve) => setTimeout(resolve, 3000));
   return res;
 });
 
