@@ -52,4 +52,17 @@ export const { pulsA, pulsB, pulsC, pulsD } = asyncSlice.actions;
 export default asyncSlice.reducer;
 
 // use selectorの非同期問題確認
-// 望んでいる動きは「state→alert Bのstate→alert」
+// 結論 下記のような処理はこの関数実行後にstateが更新される
+//  const testC = () => {
+//   ①dispatch(pulsA())
+//   ②dispatch(pulsC(countA))
+// }
+// 対処法としては、getStateを使う
+// const testE = () => {
+//   dispatch(pulsA())
+//   const currentState = store.getState()
+//   dispatch(pulsC(currentState.asyncTest.countA))
+// }
+// もしくはreducerの処理を書き変える
+//
+// ①の処理が非同期の場合、async chunkを使用する
