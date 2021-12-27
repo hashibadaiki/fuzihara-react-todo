@@ -48,7 +48,7 @@ export const App = () => {
             //@ts-ignore
             <div key={elm.id} style={elm.isDelete ? { display: "none" } : {display:"block"}}>
               {elm.text}
-              <button onClick={() => deleteList(elm)}>削除</button>
+              <button onClick={() => dispatch(deleteText(elm.id))}>削除</button>
             </div>)
         })}
       </section>

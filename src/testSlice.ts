@@ -25,15 +25,20 @@ export const counterSlice = createSlice({
       console.log(state.text2)
     },
     deleteText: (state, action) => {
-      // state.delete
-      if (action.payload) {
-        state.isDelete = !state.isDelete
-      }
-    }
+      console.log("state.text2");
+      state.text2.map((elm) => {
+        if (elm.id === action.payload) {
+          elm.isDelete = true;
+          console.log("true");
+        }
+      });
+      console.log(state.text2);
+    },
   },
 });
 
-export const { increase, decrease, insertText,initTodo,deleteText } = counterSlice.actions;
+export const { increase, decrease, insertText, initTodo, deleteText } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;
 
