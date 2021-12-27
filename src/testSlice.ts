@@ -4,7 +4,10 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     count: 0,
-    text: [] as string[],
+    text: [] as any[],
+    text2: [] as any[],
+    isDelete: false,
+    id: new Date().getTime()
   },
   reducers: {
     increase: (state) => {
@@ -15,11 +18,22 @@ export const counterSlice = createSlice({
     },
     insertText: (state, action) => {
       state.text.push(action.payload);
+      console.log(state.text)
     },
+    initTodo: (state, action) => {
+      state.text2.push({ id: new Date(),isDelete: false, text: action.payload });
+      console.log(state.text2)
+    },
+    deleteText: (state, action) => {
+      // state.delete
+      if (action.payload) {
+        state.isDelete = !state.isDelete
+      }
+    }
   },
 });
 
-export const { increase, decrease, insertText } = counterSlice.actions;
+export const { increase, decrease, insertText,initTodo,deleteText } = counterSlice.actions;
 
 export default counterSlice.reducer;
 

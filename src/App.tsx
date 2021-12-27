@@ -1,21 +1,28 @@
 import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
-import { increase } from './testSlice';
+import { increase, deleteText } from './testSlice';
 import { pulsA, pulsB } from './asyncSlice';
 import { RootState } from './store';
 
 export const App = () => {
   const count = useSelector((state: RootState) => state.counter.count);
   const text = useSelector((state: RootState) => state.counter.text);
+  const text2 = useSelector((state: RootState) => state.counter.text2);
+  const isDelete = useSelector((state: RootState) => state.counter.isDelete);
   const countA = useSelector((state: RootState) => state.asyncTest.countA);
   const countB = useSelector((state: RootState) => state.asyncTest.countB);
   const dispatch = useDispatch();
 
   const DoubleUp = async () => {
-    // await new Promise(resolve => setTimeout(resolve, 3000)) 
+    // await new Promise(resolve => setTimeout(resolve, 3000))
     await dispatch(pulsA())
     await dispatch(pulsB())
+  }
+  const deleteList = (elm) => {
+    if () {
+      dispatch(deleteText())
+    }
   }
 
   return (
@@ -35,8 +42,14 @@ export const App = () => {
       <section className='todoList'>
         <h2>todo list</h2>
         <InsertFrom />
-        {text.map((elm, i) => {
-          return <div key={i}>{elm}</div>
+        {console.log(text2)}
+        {text2.map((elm) => {
+          return (
+            //@ts-ignore
+            <div key={elm.id} style={elm.isDelete ? { display: "none" } : {display:"block"}}>
+              {elm.text}
+              <button onClick={() => deleteList(elm)}>削除</button>
+            </div>)
         })}
       </section>
     </div>
