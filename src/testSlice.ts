@@ -6,8 +6,6 @@ export const counterSlice = createSlice({
     count: 0,
     text: [] as any[],
     text2: [] as any[],
-    isDelete: false,
-    id: new Date().getTime()
   },
   reducers: {
     increase: (state) => {
@@ -18,21 +16,21 @@ export const counterSlice = createSlice({
     },
     insertText: (state, action) => {
       state.text.push(action.payload);
-      console.log(state.text)
     },
     initTodo: (state, action) => {
-      state.text2.push({ id: new Date(),isDelete: false, text: action.payload });
-      console.log(state.text2)
+      state.text2.push({
+        id: new Date().getTime(),
+        isDelete: false,
+        text: action.payload,
+      });
     },
     deleteText: (state, action) => {
-      console.log("state.text2");
       state.text2.map((elm) => {
         if (elm.id === action.payload) {
           elm.isDelete = true;
           console.log("true");
         }
       });
-      console.log(state.text2);
     },
   },
 });

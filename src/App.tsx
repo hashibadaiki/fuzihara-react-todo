@@ -9,7 +9,6 @@ export const App = () => {
   const count = useSelector((state: RootState) => state.counter.count);
   const text = useSelector((state: RootState) => state.counter.text);
   const text2 = useSelector((state: RootState) => state.counter.text2);
-  const isDelete = useSelector((state: RootState) => state.counter.isDelete);
   const countA = useSelector((state: RootState) => state.asyncTest.countA);
   const countB = useSelector((state: RootState) => state.asyncTest.countB);
   const dispatch = useDispatch();
@@ -18,11 +17,6 @@ export const App = () => {
     // await new Promise(resolve => setTimeout(resolve, 3000))
     await dispatch(pulsA())
     await dispatch(pulsB())
-  }
-  const deleteList = (elm) => {
-    if () {
-      dispatch(deleteText())
-    }
   }
 
   return (
@@ -45,7 +39,6 @@ export const App = () => {
         {console.log(text2)}
         {text2.map((elm) => {
           return (
-            //@ts-ignore
             <div key={elm.id} style={elm.isDelete ? { display: "none" } : {display:"block"}}>
               {elm.text}
               <button onClick={() => dispatch(deleteText(elm.id))}>削除</button>
