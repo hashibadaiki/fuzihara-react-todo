@@ -1,7 +1,7 @@
 import './App.css'
 import { InsertFrom } from "./InsertForm"
 import { useSelector, useDispatch } from 'react-redux';
-import { increase, deleteText } from './testSlice';
+import { increase, deleteText,editText } from './testSlice';
 import { pulsA, pulsB } from './asyncSlice';
 import { RootState } from './store';
 
@@ -18,6 +18,8 @@ export const App = () => {
     await dispatch(pulsA())
     await dispatch(pulsB())
   }
+
+
 
   return (
     <div className="wrapper">
@@ -36,11 +38,12 @@ export const App = () => {
       <section className='todoList'>
         <h2>todo list</h2>
         <InsertFrom />
-        {console.log(text2)}
+
         {text2.map((elm) => {
           return (
-            <div key={elm.id} style={elm.isDelete ? { display: "none" } : {display:"block"}}>
-              {elm.text}
+            <div key={elm.id} style={elm.isDelete ? { display: "none" } : { display: "block" }}>
+            {elm.text}
+              <input type="text" onChange={(e) => dispatch(editText({id: elm.id, value: e.target.value}))}/>
               <button onClick={() => dispatch(deleteText(elm.id))}>削除</button>
             </div>)
         })}

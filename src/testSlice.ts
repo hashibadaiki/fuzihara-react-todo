@@ -32,10 +32,18 @@ export const counterSlice = createSlice({
         }
       });
     },
+    editText: (state, action) => {
+      console.log(action);
+      state.text2.map((elm) => {
+        if (elm.id === action.payload.id) {
+          elm.text = action.payload.value
+        }
+      });
+    }
   },
 });
 
-export const { increase, decrease, insertText, initTodo, deleteText } =
+export const { increase, decrease, insertText, initTodo, deleteText,editText } =
   counterSlice.actions;
 
 export default counterSlice.reducer;
